@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kişisel CV ve Portfolyo Web Sitesi">
+    <title>Yasin Büyükbağrıaçık</title>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        dark: '#1F2937',
+                        light: '#F3F4F6'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Loading Screen -->
+    <div id="loading" class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-gray-900">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary"></a>
+
+            <div class="hidden md:flex space-x-8">
+                <a href="#hero" class="hover:text-primary transition-colors">Ana Sayfa</a>
+                <a href="#about" class="hover:text-primary transition-colors">Hakkımda</a>
+                <a href="#skills" class="hover:text-primary transition-colors">Yetenekler</a>
+                <a href="#projects" class="hover:text-primary transition-colors">Projeler</a>
+                <a href="#experience" class="hover:text-primary transition-colors">Deneyim</a>
+                <a href="#contact" class="hover:text-primary transition-colors">İletişim</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg absolute w-full left-0 top-full">
+            <div class="flex flex-col p-4 space-y-4">
+                <a href="#hero" class="hover:text-primary">Ana Sayfa</a>
+                <a href="#about" class="hover:text-primary">Hakkımda</a>
+                <a href="#skills" class="hover:text-primary">Yetenekler</a>
+                <a href="#projects" class="hover:text-primary">Projeler</a>
+                <a href="#experience" class="hover:text-primary">Deneyim</a>
+                <a href="#contact" class="hover:text-primary">İletişim</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero"
+            class="min-h-screen flex items-center justify-center relative overflow-hidden bg-white dark:bg-gray-900 pt-20">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 z-0 pointer-events-none">
+                <div
+                    class="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-100 dark:bg-blue-900 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-1/3 h-1/3 bg-green-100 dark:bg-green-900 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000">
+                </div>
+            </div>
+
+            <div class="container mx-auto px-6 z-10 text-center relative" data-aos="fade-up">
+                <h2 class="text-xl md:text-2xl font-medium text-primary mb-4 font-sans">Merhaba, Ben</h2>
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
+                    Yasin
+                </h1>
+                <div class="text-2xl md:text-4xl text-gray-600 dark:text-gray-300 mb-8 h-12 font-light">
+                    <span id="typed-text"></span>
+                </div>
+
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Oyunları kodluyorum, hayalleri gerçeğe dönüştürüyorum. Modern web teknolojileri ve oyun geliştirme
+                    tutkusuyla kullanıcı dostu projeler üretiyorum.
+                </p>
+
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                    <a href="assets/cv.pdf" download
+                        class="px-8 py-3 bg-primary text-white rounded-full font-medium hover:bg-blue-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center">
+                        <i class="fas fa-download mr-2"></i> CV İndir
+                    </a>
+                    <a href="#contact"
+                        class="px-8 py-3 border-2 border-primary text-primary dark:text-white rounded-full font-medium hover:bg-primary hover:text-white transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center">
+                        <i class="fas fa-envelope mr-2"></i> İletişime Geç
+                    </a>
+                </div>
+
+                <div class="mt-12 flex justify-center space-x-8">
+                    <a href="#"
+                        class="text-3xl text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors transform hover:scale-110">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#"
+                        class="text-3xl text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors transform hover:scale-110">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#"
+                        class="text-3xl text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scroll Down Indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer">
+                <a href="#about" class="text-gray-400 hover:text-primary transition-colors p-2">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white"
+                    data-aos="fade-up">Hakkımda</h2>
+
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="w-full md:w-1/2" data-aos="fade-right">
+                        <div class="relative group">
+                            <div
+                                class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+                            </div>
+                            <img src="C:\Users\Yasinus\.gemini\antigravity\scratch\cv-website\images\profile.jpeg"
+                                alt="Profil Fotoğrafı"
+                                class="relative rounded-lg shadow-xl w-full max-w-md mx-auto transform transition duration-500 hover:scale-105">
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-1/2" data-aos="fade-left">
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Tutkulu Bir Geliştirici
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                            Merhaba! Ben Yasin, C# ve Unity konusunda uzmanlaşmış bir yazılım geliştiriciyim.
+                            Problem çözme becerimi ve yaratıcılığımı birleştirerek kullanıcıların sevebileceği ürünler
+                            geliştirmeyi hedefliyorum.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                            Temiz kod yazmaya, sürekli öğrenmeye ve takım çalışmasına önem veriyorum. Boş zamanlarımda
+                            yeni projeler oluşturuyor ve yeni teknolojiler öğreniyorum.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
+                                <i class="fas fa-code text-primary"></i>
+                                <span>Temiz Kod</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
+                                <i class="fas fa-users text-primary"></i>
+                                <span>Takım Oyuncusu</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
+                                <i class="fas fa-lightbulb text-primary"></i>
+                                <span>Yaratıcı</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
+                                <i class="fas fa-rocket text-primary"></i>
+                                <span>Hızlı Öğrenen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white"
+                    data-aos="fade-up">Yetenekler</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Unity -->
+                    <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2"
+                        data-aos="fade-up" data-aos-delay="100">
+                        <div
+                            class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mb-4 mx-auto text-primary text-3xl">
+                            <i class="fab fa-unity"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-center mb-2 dark:text-white">Unity</h3>
+                        <p class="text-gray-500 text-center text-sm mb-3">Game Development</p>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                            <div class="bg-primary h-2.5 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+
+                    <!-- C# -->
+                    <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <div
+                            class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mb-4 mx-auto text-purple-600 text-3xl">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-center mb-2 dark:text-white">C#</h3>
+                        <p class="text-gray-500 text-center text-sm mb-3">.NET Core</p>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                            <div class="bg-purple-600 h-2.5 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+
+                    <!-- SQL -->
+                    <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2"
+                        data-aos="fade-up" data-aos-delay="300">
+                        <div
+                            class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4 mx-auto text-success text-green-600 text-3xl">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-center mb-2 dark:text-white">SQL</h3>
+                        <p class="text-gray-500 text-center text-sm mb-3">Database Design</p>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                            <div class="bg-green-600 h-2.5 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Web Dev -->
+                    <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all transform hover:-translate-y-2"
+                        data-aos="fade-up" data-aos-delay="400">
+                        <div
+                            class="w-16 h-16 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mb-4 mx-auto text-yellow-500 text-3xl">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-center mb-2 dark:text-white">JavaScript</h3>
+                        <p class="text-gray-500 text-center text-sm mb-3">Frontend</p>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                            <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white"
+                    data-aos="fade-up">Projeler</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transition-all transform hover:-translate-y-2 hover:shadow-2xl"
+                        data-aos="fade-up">
+                        <div class="relative overflow-hidden group">
+                            <img src="C:\Users\Yasinus\.gemini\antigravity\scratch\cv-website\images\nkatmanmimari.png"
+                                alt="Project 1"
+                                class="w-full h-48 object-cover transform transition duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                                <a href="https://github.com/YasinBba/NKatmanliMimari" target="_blank"
+                                    class="p-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors"><i
+                                        class="fab fa-github"></i></a>
+                                <a href="#"
+                                    class="p-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors"><i
+                                        class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">🧩 N Katmanlı Mimari (C# -
+                                ADO.NET)</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+
+                                Bu proje, C# dili kullanılarak N Katmanlı Mimari (N-Layer Architecture) yapısında
+                                geliştirilmiş örnek bir uygulamadır. Amaç; yazılım projelerinde katmanlar arası
+                                bağımlılığı azaltmak, bakımı kolaylaştırmak ve kurumsal ölçekli yapılara uygun bir
+                                mimariyi örneklemektir.
+                                .</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">C#</span>
+                                <span
+                                    class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs font-semibold">ADO.NET</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transition-all transform hover:-translate-y-2 hover:shadow-2xl"
+                        data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative overflow-hidden group">
+                            <img src="C:\Users\Yasinus\.gemini\antigravity\scratch\cv-website\images\rentacarr.png"
+                                alt="Project 2"
+                                class="w-full h-48 object-cover transform transition duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                                <a href="https://github.com/YasinBba/RentACarProject" target="_blank"
+                                    class="p-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors"><i
+                                        class="fab fa-github"></i></a>
+                                <a href="#"
+                                    class="p-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors"><i
+                                        class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">RentACarProject</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">RentACarProject, C# ve Windows
+                                Forms ile geliştirilen katmanlı mimariye sahip bir araç kiralama yönetim sistemidir.
+                                Uygulama, araçların kiralanmasını, müşteri yönetimini ve kira işlemlerinin takibini
+                                kolaylaştırmayı amaçlar.
+
+                                .</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-semibold">.NET
+                                    Core</span>
+                                <span
+                                    class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-xs font-semibold">SQL</span>
+                                <span
+                                    class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-semibold">C#</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transition-all transform hover:-translate-y-2 hover:shadow-2xl"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative overflow-hidden group">
+                            <img src="C:\Users\Yasinus\.gemini\antigravity\scratch\cv-website\images\webste.png"
+                                alt="Project 3"
+                                class="w-full h-48 object-cover transform transition duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                                <a href="https://github.com/Yasinus/Personal-Portfolio" target="_blank"
+                                    class="p-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors"><i
+                                        class="fab fa-github"></i></a>
+                                <a href="#"
+                                    class="p-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors"><i
+                                        class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Kişisel Portfolyo</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Modern ve responsive kişisel
+                                tanıtım sitesi.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-semibold">HTML5</span>
+                                <span
+                                    class="px-3 py-1 bg-teal-100 text-teal-600 rounded-full text-xs font-semibold">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white"
+                    data-aos="fade-up">Deneyim & Eğitim</h2>
+
+                <div class="max-w-4xl mx-auto space-y-8">
+                    <!-- Item 1 -->
+                    <div class="relative pl-8 border-l-4 border-primary" data-aos="fade-left">
+                        <div
+                            class="absolute -left-3 top-0 bg-primary w-5 h-5 rounded-full ring-4 ring-white dark:ring-gray-900">
+                        </div>
+                        <span class="text-sm text-primary font-semibold tracking-wide">2019 - 2023</span>
+                        <h3 class="text-xl font-bold mt-1 text-gray-900 dark:text-white">Yönetim Bilişim Sistemleri</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Akdeniz Üniversitesi</p>
+                        <p class="mt-2 text-gray-600 dark:text-gray-400">
+                            Kodlamanın temelleri, algoritma analizi, veri yapıları ve yönetim becerileri üzerine eğitim.
+                            GPA:
+                            2.99/4.0
+                        </p>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="relative pl-8 border-l-4 border-gray-300 dark:border-gray-700" data-aos="fade-left"
+                        data-aos-delay="100">
+                        <div
+                            class="absolute -left-3 top-0 bg-gray-300 dark:bg-gray-700 w-5 h-5 rounded-full ring-4 ring-white dark:ring-gray-900">
+                        </div>
+                        <span class="text-sm text-gray-500 font-semibold tracking-wide">2023 Yaz</span>
+                        <h3 class="text-xl font-bold mt-1 text-gray-900 dark:text-white">IT Destek Uzmanı</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Hilmi Beken Petrol ve Ticaret </p>
+                        <p class="mt-2 text-gray-600 dark:text-gray-400">
+                            Profesonel ofis çalışma ortamı, donanım ve yazılımsal problemlere çözüm üretme.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white"
+                    data-aos="fade-up">İletişim</h2>
+
+                <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-8">
+                    <!-- Contact Info -->
+                    <div class="w-full md:w-1/3 space-y-6" data-aos="fade-right">
+                        <div class="p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+                            <i class="fas fa-envelope text-2xl text-primary mb-4"></i>
+                            <h3 class="text-lg font-bold mb-2 dark:text-white">Email</h3>
+                            <p class="text-gray-600 dark:text-gray-400 break-words">bagriacikyasin@gmail.com</p>
+                        </div>
+                        <div class="p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+                            <i class="fas fa-map-marker-alt text-2xl text-primary mb-4"></i>
+                            <h3 class="text-lg font-bold mb-2 dark:text-white">Konum</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Antalya, Türkiye</p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="w-full md:w-2/3" data-aos="fade-left">
+                        <form id="contact-form" class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label
+                                        class="block text-sm font-bold mb-2 text-gray-700 dark:text-gray-300">İsim</label>
+                                    <input type="text" name="user_name" required
+                                        class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-2 focus:ring-primary outline-none transition-colors"
+                                        placeholder="Adınız">
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-sm font-bold mb-2 text-gray-700 dark:text-gray-300">Email</label>
+                                    <input type="email" name="user_email" required
+                                        class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-2 focus:ring-primary outline-none transition-colors"
+                                        placeholder="email@ornek.com">
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label
+                                    class="block text-sm font-bold mb-2 text-gray-700 dark:text-gray-300">Mesaj</label>
+                                <textarea name="message" required rows="5"
+                                    class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-2 focus:ring-primary outline-none transition-colors"
+                                    placeholder="Mesajınız..."></textarea>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors transform hover:-translate-y-1 shadow-md">
+                                <span id="btn-text">Gönder</span>
+                                <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                            <p id="form-status" class="mt-4 text-center text-sm hidden"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-8">
+            <div class="container mx-auto px-6 text-center">
+                <p class="text-gray-600 dark:text-gray-400">© 2026 Tüm Hakları Saklıdır.</p>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i
+                            class="fab fa-github"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i
+                            class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Scroll to Top -->
+    <button id="scroll-to-top"
+        class="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg hidden hover:bg-blue-600 transition-all z-40">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Local Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+
+</html>
