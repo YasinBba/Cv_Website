@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize EmailJS (Replace with your direct API key usually, but best practice is secure. For client side strictly, use public key)
     // NOTE: User needs to put their own PUBLIC KEY here
-    emailjs.init("YOUR_PUBLIC_KEY");
+    emailjs.init("P2oS6HjANbZmWNddp");
 
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
